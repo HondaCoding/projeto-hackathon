@@ -1,0 +1,16 @@
+# Ignorar todas as node_modules (React + Node.js)
+**/node_modules/
+
+# Ignorar builds do React
+**/dist/
+**/build/
+
+# Arquivos de ambiente (caso crie futuramente)
+**/.env
+
+# Logs
+*.log
+
+# Cache do editor (como VSCode)
+.vscode/
+.DS_Store
