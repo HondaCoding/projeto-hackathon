@@ -1,0 +1,84 @@
+.responsavel-list-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.btn-primary, .btn-secondary {
+  margin: 8px 8px 16px 0;
+  padding: 8px 16px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.responsavel-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 32px;
+}
+
+.responsavel-table th, .responsavel-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.responsavel-table th {
+  background-color: #00245360;
+}
+
+.acoes button {
+  margin-right: 8px;
+  background-color: #28a745;
+}
+
+.acoes button:last-child {
+  background-color: #dc3545;
+}
+
+.responsavel-card-list {
+  display: none;
+}
+
+/* Responsivo: mostrar lista em cards no mobile */
+@media (max-width: 768px) {
+  .table-wrapper {
+    display: none;
+  }
+
+  .responsavel-card-list {
+    display: block;
+  }
+
+  .responsavel-card {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 16px;
+    background-color: #141313;
+  }
+
+  .responsavel-card .acoes {
+    margin-top: 8px;
+  }
+
+  .responsavel-card .acoes button {
+    margin-right: 8px;
+    background-color: #007bff;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+  }
+}

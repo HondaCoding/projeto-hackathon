@@ -18,6 +18,22 @@ router.get('/', (req, res) => {
     });
 });
 
+// -------- GET POR ID ----------
+router.get('/:id', (req, res) => {
+    const { id } = req.params;
+    const sql = 'SELECT * FROM tiporecurso WHERE idtiporecurso = ?';
+    db.query(sql, [id], (err, results) => {
+        if (err) {
+            return res.status(500).send('Erro ao buscar recurso');
+        }
+        if (results.length === 0) {
+            return res.status(404).send('Recurso não encontrado');
+        }
+        res.json(results[0]); // retorna apenas o objeto, não um array
+    });
+});
+
+
 //---------------- POST ------------------
 router.post('/', (req, res) => {
     const { tiporecurso, descricao } = req.body;

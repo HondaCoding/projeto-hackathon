@@ -1,0 +1,85 @@
+.reserva-devolucao-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+h2 {
+  margin-bottom: 1rem;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+.reserva-devolucao-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.reserva-devolucao-table th, .reserva-devolucao-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.reserva-devolucao-table th {
+  background-color: #160000;
+}
+
+.reserva-devolucao-table tbody tr:hover {
+  background-color: #5353534f;
+}
+
+button {
+  background-color: #28a74e;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #a52323;
+}
+
+.btn-secondary {
+  margin-top: 16px;
+  background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Cards para mobile */
+.reserva-devolucao-card-list {
+  display: none;
+}
+
+.reserva-devolucao-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  background-color: #000000;
+}
+
+.reserva-devolucao-card button {
+  margin-top: 12px;
+  width: 100%;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .table-wrapper {
+    display: none;
+  }
+
+  .reserva-devolucao-card-list {
+    display: block;
+  }
+}

@@ -1,20 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function FuncaoList() {
+export default function FuncaoList() {
   const [funcoes, setFuncoes] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/funcao')
-      .then((res) => res.json())
-      .then((data) => {
+    fetch("http://localhost:3000/api/funcao")
+      .then(res => res.json())
+      .then(data => {
         setFuncoes(data);
         setLoading(false);
       })
-      .catch((err) => {
-        console.error('Erro ao buscar funções:', err);
+      .catch(err => {
+        console.error("Erro ao buscar funções:", err);
         setLoading(false);
       });
   }, []);
@@ -22,27 +22,49 @@ function FuncaoList() {
   if (loading) return <p>Carregando funções...</p>;
 
   return (
-    <div>
+    <div className="funcao-list-container">
       <h2>Funções</h2>
+      <button className="btn-primary" onClick={() => navigate("/funcao/novo")}>Nova Função</button>
 
-      <button onClick={() => navigate("/funcao/novo")}>Adicionar Função</button>
+      {/* Tabela para telas grandes */}
+      <div className="table-wrapper">
+        <table className="funcao-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome da Função</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {funcoes.map((f) => (
+              <tr key={f.idfuncao}>
+                <td>{f.idfuncao}</td>
+                <td>{f.tipoFuncao}</td>
+                <td className="acoes">
+                  <button onClick={() => navigate(`/funcao/editar/${f.idfuncao}`)}>Editar</button>
+                  <button onClick={() => navigate(`/funcao/excluir/${f.idfuncao}`)}>Excluir</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-      <ul>
-        {funcoes.map((funcao) => (
-          <div style={{ marginTop: "5px" }}>
-             <li key={funcao.idfuncao}>
-            {funcao.tipoFuncao} - {funcao.permissao}
-              <button onClick={() => navigate(`/funcao/editar/${funcao.idfuncao}`)}>Alterar</button>
-              <button onClick={() => navigate(`/funcao/excluir/${funcao.idfuncao}`)}>Excluir</button>
-            </li>
+      {/* Lista para telas pequenas */}
+      <div className="funcao-card-list">
+        {funcoes.map((f) => (
+          <div className="funcao-card" key={f.idfuncao}>
+            <p><strong>ID:</strong> {f.idfuncao}</p>
+            <p><strong>Nome:</strong> {f.tipoFuncao}</p>
+            <div className="acoes">
+              <button onClick={() => navigate(`/funcao/editar/${f.idfuncao}`)}>Editar</button>
+              <button onClick={() => navigate(`/funcao/excluir/${f.idfuncao}`)}>Excluir</button>
+            </div>
           </div>
         ))}
-      </ul>
-
+      </div>
       <button onClick={() => navigate("/")}>Voltar</button>
-      
     </div>
   );
 }
-
-export default FuncaoList;

@@ -1,20 +1,55 @@
 const express = require('express');
-const {Router} = express;
+const { Router } = express;
 const router = Router();
 const db = require('../../infraestrutura/db');
-
 
 router.use(express.json());
 
 //---------------- GET ------------------
 router.get('/', (req, res) => {
-    const sql = 'SELECT * FROM recurso';
+    const sql = `
+        SELECT 
+            r.*, 
+            res.nome AS nomeResponsavel, 
+            tr.tiporecurso AS nomeTipoRecurso
+        FROM recurso r
+        JOIN responsavel res ON r.idresponsavel = res.idresponsavel
+        JOIN tiporecurso tr ON r.idtiporecurso = tr.idtiporecurso
+        WHERE r.ativo = 1
+    `;
+
     db.query(sql, (err, results) => {
         if (err) {
-            res.status(500).send('Erro ao buscar reservas');
-        } else {
-            res.json(results);
+            console.error(err);
+            return res.status(500).send('Erro ao buscar reservas');
         }
+        res.json(results);
+    });
+});
+
+// -------- GET POR ID ----------
+router.get('/:id', (req, res) => {
+    const { id } = req.params;
+    const sql = `
+        SELECT 
+            r.*, 
+            res.nome AS nomeResponsavel, 
+            tr.tiporecurso AS nomeTipoRecurso
+        FROM recurso r
+        JOIN responsavel res ON r.idresponsavel = res.idresponsavel
+        JOIN tiporecurso tr ON r.idtiporecurso = tr.idtiporecurso
+        WHERE r.idrecurso = ? AND r.ativo = 1
+    `;
+
+    db.query(sql, [id], (err, results) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Erro ao buscar reserva');
+        }
+        if (results.length === 0) {
+            return res.status(404).send('Reserva não encontrada');
+        }
+        res.json(results[0]);
     });
 });
 
@@ -67,41 +102,21 @@ router.post('/', (req, res) => {
     });
 });
 
-//---------------- PUT ------------------
+//---------------- PUT PARCIAL ------------------
 router.put('/:id', (req, res) => {
     const { id } = req.params;
-    const {
-        idresponsavel,
-        idtiporecurso,
-        descricao,
-        quantidade,
-        dataLocacao,
-        horarioLocacao,
-        dataDevolucao,
-        horarioDevolucao,
-        ativo
-    } = req.body;
+    const campos = req.body;
 
-    const sql = `
-        UPDATE recurso 
-        SET idresponsavel = ?, idtiporecurso = ?, descricao = ?, quantidade = ?, 
-            dataLocacao = ?, horarioLocacao = ?, dataDevolucao = ?, horarioDevolucao = ?, ativo = ?
-        WHERE idrecurso = ?`;
+    if (!campos || Object.keys(campos).length === 0) {
+        return res.status(400).send('Nenhum dado enviado para atualização.');
+    }
 
-    const values = [
-        idresponsavel,
-        idtiporecurso,
-        descricao,
-        quantidade,
-        dataLocacao,
-        horarioLocacao,
-        dataDevolucao,
-        horarioDevolucao,
-        ativo,
-        id
-    ];
+    const colunas = Object.keys(campos).map(campo => `${campo} = ?`).join(', ');
+    const valores = Object.values(campos);
 
-    db.query(sql, values, (err, results) => {
+    const sql = `UPDATE recurso SET ${colunas} WHERE idrecurso = ?`;
+
+    db.query(sql, [...valores, id], (err, results) => {
         if (err) {
             console.error(err);
             return res.status(500).send('Erro ao atualizar recurso.');
@@ -114,7 +129,6 @@ router.put('/:id', (req, res) => {
         res.send('Recurso atualizado com sucesso!');
     });
 });
-
 
 //---------------- DELETE ------------------
 router.delete('/:id', (req, res) => {
@@ -134,7 +148,5 @@ router.delete('/:id', (req, res) => {
         res.send('Recurso deletado com sucesso!');
     });
 });
-
-
 
 module.exports = router;

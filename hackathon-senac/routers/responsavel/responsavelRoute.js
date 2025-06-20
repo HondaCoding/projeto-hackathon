@@ -7,13 +7,45 @@ router.use(express.json());
 
 //---------------- GET ------------------
 router.get('/', (req, res) => {
-    const sql = 'SELECT * FROM responsavel'
+    const sql = `
+    SELECT 
+        r.*, 
+        f.tipoFuncao AS nomeFuncao,
+        f.permissao
+    FROM responsavel r
+    JOIN funcao f ON r.idfuncao = f.idfuncao
+`;
     db.query(sql, (err, results) => {
         if (err) {
-            res.status(500).send('Erro ao buscar recursos');
+            console.error(err);
+            res.status(500).send('Erro ao buscar responsáveis');
         } else {
             res.json(results);
         }
+    });
+});
+
+
+// -------- GET POR ID COM nomeFuncao ----------
+router.get('/:id', (req, res) => {
+    const { id } = req.params;
+    const sql = `
+        SELECT 
+            r.*, 
+            f.tipoFuncao AS nomeFuncao
+        FROM responsavel r
+        JOIN funcao f ON r.idfuncao = f.idfuncao
+        WHERE r.idresponsavel = ?
+    `;
+    db.query(sql, [id], (err, results) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Erro ao buscar responsável');
+        }
+        if (results.length === 0) {
+            return res.status(404).send('Responsável não encontrado');
+        }
+        res.json(results[0]);
     });
 });
 

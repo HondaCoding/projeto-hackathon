@@ -1,0 +1,394 @@
+.app-logo {
+  width: 80px;       /* tamanho pequeno */
+  height: auto;
+  margin: 20px auto; /* margem e centralização */
+  display: block;
+}
+
+.container {
+  max-width: 80vw;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+.titulo {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtitulo {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.botoes-navegacao {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.botoes-navegacao button {
+  flex: 1 1 150px;
+  min-width: 120px;
+}
+
+.container-centralizada {
+  width: 70%;
+  max-width: 1280px;
+  min-width: 320px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centraliza conteúdo horizontalmente dentro do container */
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.reserva-list-container {
+  max-width: 100%;
+  overflow-x: auto;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.reserva-list-container h2 {
+  margin-bottom: 1rem;
+}
+
+.btn-primary {
+  background-color: #646cff;
+  color: white;
+  border: none;
+  padding: 0.5em 1em;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #535bf2;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.reserva-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px; /* garante scroll horizontal se tela for pequena */
+}
+
+.reserva-table th,
+.reserva-table td {
+  border: 1px solid #ccc;
+  padding: 0.6em 0.8em;
+  font-size: 0.9rem;
+}
+
+.reserva-table th {
+  background-color: #1a1a1a;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.reserva-table tbody tr:nth-child(even) {
+  background-color: #2a2a2a;
+}
+
+.reserva-table tbody tr:hover {
+  background-color: #3d3dff33; /* leve destaque no hover */
+}
+
+.acoes button {
+  margin: 0 0.25em;
+  padding: 0.3em 0.6em;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.acoes button:first-child {
+  background-color: #4caf50;
+  color: white;
+}
+
+.acoes button:first-child:hover {
+  background-color: #45a049;
+}
+
+.acoes button:last-child {
+  background-color: #f44336;
+  color: white;
+}
+
+.acoes button:last-child:hover {
+  background-color: #d32f2f;
+}
+
+/* Responsividade simples */
+@media (max-width: 700px) {
+  .reserva-table {
+    font-size: 0.75rem;
+    min-width: 700px;
+  }
+}
+
+
+
+/* Oculta lista mobile no desktop */
+.reserva-mobile-list {
+  display: none;
+}
+
+/* Estilo da lista mobile (em blocos verticais) */
+@media (max-width: 768px) {
+  .table-responsive {
+    display: none;
+  }
+
+  .reserva-mobile-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .reserva-mobile-item {
+    background-color: #1e1e1e;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  .reserva-mobile-item p {
+    margin: 0.4em 0;
+    font-size: 0.9rem;
+    color: #ddd;
+  }
+
+  .reserva-mobile-item strong {
+    color: #fff;
+  }
+
+  .reserva-mobile-item .acoes {
+    margin-top: 0.6em;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-start;
+  }
+
+  .reserva-mobile-item .acoes button {
+    font-size: 0.85rem;
+    padding: 0.4em 0.7em;
+  }
+}
+
+/* Container principal do formulário */
+.form-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  color: #fff;
+}
+
+/* Título da página */
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Estilização geral dos campos */
+form label {
+  display: block;
+  margin: 1rem 0 0.5rem;
+  font-weight: 600;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 0.7em;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background-color: #2a2a2a;
+  color: #fff;
+  font-size: 1rem;
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Botão principal */
+form button[type="submit"] {
+  margin-top: 1.5rem;
+  background-color: #646cff;
+  color: white;
+  padding: 0.8em 1.2em;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+form button[type="submit"]:hover {
+  background-color: #535bf2;
+}
+
+/* Botão voltar */
+button.voltar-btn {
+  display: block;
+  margin: 1rem auto 0;
+  padding: 0.6em 1.2em;
+  background-color: #777;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+button.voltar-btn:hover {
+  background-color: #555;
+}
+
+.funcao-list-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+.funcao-list-container h2 {
+  margin-bottom: 1rem;
+}
+
+.btn-primary {
+  background-color: #646cff;
+  color: white;
+  border: none;
+  padding: 0.6em 1em;
+  margin-bottom: 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #535bf2;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+.funcao-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.funcao-table th,
+.funcao-table td {
+  padding: 0.7em 1em;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+.funcao-table th {
+  background-color: #00690548;
+  color: #fff;
+}
+
+.funcao-table tbody tr:nth-child(even) {
+  background-color: #2a2a2a;
+}
+
+.funcao-table tbody tr:hover {
+  background-color: #3d3dff33;
+}
+
+.acoes button {
+  margin: 0 0.25em;
+  padding: 0.4em 0.8em;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.acoes button:first-child {
+  background-color: #4caf50;
+  color: white;
+}
+
+.acoes button:first-child:hover {
+  background-color: #45a049;
+}
+
+.acoes button:last-child {
+  background-color: #f44336;
+  color: white;
+}
+
+.acoes button:last-child:hover {
+  background-color: #d32f2f;
+}
+
+/* Cards responsivos para mobile */
+.funcao-card-list {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .table-wrapper {
+    display: none;
+  }
+
+  .funcao-card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .funcao-card {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    text-align: left;
+  }
+
+  .funcao-card p {
+    margin: 0.3em 0;
+    font-size: 0.95rem;
+  }
+
+  .funcao-card .acoes {
+    margin-top: 0.7rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+}

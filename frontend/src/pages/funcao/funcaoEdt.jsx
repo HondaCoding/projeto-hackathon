@@ -34,7 +34,7 @@ export default function FuncaoEdit() {
         <form onSubmit={handleSubmit}>
             <h2>Editar Função</h2>
 
-            <p><strong>Valor atual:</strong> {oldData.tipoFuncao}</p>
+            <p><strong>Função atual:</strong> {oldData.tipoFuncao}</p>
             <input value={tipoFuncao} onChange={e => setTipoFuncao(e.target.value)} />
 
             <p><strong>Permissão atual:</strong> {oldData.permissao}</p>

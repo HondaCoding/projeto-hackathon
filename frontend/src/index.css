@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #1b1e20;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -24,11 +24,11 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
+
+
 
 h1 {
   font-size: 3.2em;
@@ -53,6 +53,35 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+.btn-funcao {
+  background-color: #4caf50; /* verde */
+  color: white;
+  border-color: #4caf50;
+}
+
+.btn-responsavel {
+  background-color: #2196f3; /* azul */
+  color: white;
+  border-color: #2196f3;
+}
+
+.btn-recurso {
+  background-color: #ff9800; /* laranja */
+  color: white;
+  border-color: #ff9800;
+}
+
+.btn-devolucao {
+  background-color: #f44336; /* vermelho */
+  color: white;
+  border-color: #f44336;
+}
+
+button:hover {
+  filter: brightness(1.1);
+  border-color: #646cff;
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {
