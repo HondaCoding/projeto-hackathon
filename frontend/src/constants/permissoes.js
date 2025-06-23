@@ -1,0 +1,7 @@
+// src/permissoes.js
+export const PERMISSOES = [
+  "ADMINISTRATIVO",
+  "COORDENADOR/PROFESSOR/INSTRUTUTOR",
+  "TEPT/GERENCIA",
+  "EXTERNO"
+];

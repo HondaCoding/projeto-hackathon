@@ -24,7 +24,9 @@ export default function FuncaoList() {
   return (
     <div className="funcao-list-container">
       <h2>Funções</h2>
-      <button className="btn-primary" onClick={() => navigate("/funcao/novo")}>Nova Função</button>
+      <button className="btn-primary" onClick={() => navigate("/funcao/novo")}>
+        Nova Função
+      </button>
 
       {/* Tabela para telas grandes */}
       <div className="table-wrapper">
@@ -33,6 +35,7 @@ export default function FuncaoList() {
             <tr>
               <th>ID</th>
               <th>Nome da Função</th>
+              <th>Permissão</th>
               <th>Ações</th>
             </tr>
           </thead>
@@ -41,6 +44,7 @@ export default function FuncaoList() {
               <tr key={f.idfuncao}>
                 <td>{f.idfuncao}</td>
                 <td>{f.tipoFuncao}</td>
+                <td>{f.permissao || "N/A"}</td>
                 <td className="acoes">
                   <button onClick={() => navigate(`/funcao/editar/${f.idfuncao}`)}>Editar</button>
                   <button onClick={() => navigate(`/funcao/excluir/${f.idfuncao}`)}>Excluir</button>
@@ -57,6 +61,7 @@ export default function FuncaoList() {
           <div className="funcao-card" key={f.idfuncao}>
             <p><strong>ID:</strong> {f.idfuncao}</p>
             <p><strong>Nome:</strong> {f.tipoFuncao}</p>
+            <p><strong>Permissão:</strong> {f.permissao || "N/A"}</p>
             <div className="acoes">
               <button onClick={() => navigate(`/funcao/editar/${f.idfuncao}`)}>Editar</button>
               <button onClick={() => navigate(`/funcao/excluir/${f.idfuncao}`)}>Excluir</button>
@@ -64,6 +69,7 @@ export default function FuncaoList() {
           </div>
         ))}
       </div>
+
       <button onClick={() => navigate("/")}>Voltar</button>
     </div>
   );

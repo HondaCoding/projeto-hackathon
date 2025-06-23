@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { PERMISSOES } from "../../constants/permissoes";
+
 
 export default function FuncaoCreate() {
   const [tipoFuncao, setTipoFuncao] = useState("");
@@ -21,7 +23,14 @@ export default function FuncaoCreate() {
         <form onSubmit={handleSubmit}>
         <h2>Cadastrar Nova Função</h2>
         <input value={tipoFuncao} onChange={e => setTipoFuncao(e.target.value)} placeholder="Tipo da função" />
-        <input value={permissao} onChange={e => setPermissao(e.target.value)} placeholder="Permissão" />
+        <select value={permissao} onChange={e => setPermissao(e.target.value)} required>
+          <option value="">Selecione uma permissão</option>
+          {PERMISSOES.map((perm) => (
+            <option key={perm} value={perm}>
+              {perm}
+            </option>
+          ))}
+        </select>
         <button type="submit">Salvar</button>
         </form>
 

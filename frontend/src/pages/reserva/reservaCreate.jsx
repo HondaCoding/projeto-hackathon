@@ -57,7 +57,7 @@ export default function ReservaCreate() {
         return;
       }
 
-      navigate("/reserva");
+      navigate("/");
     } catch (error) {
       alert("Erro de rede: " + error.message);
     }

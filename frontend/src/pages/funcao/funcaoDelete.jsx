@@ -5,11 +5,25 @@ export default function FuncaoDelete() {
   const navigate = useNavigate();
 
   const handleDelete = async () => {
-    await fetch(`http://localhost:3000/api/funcao/${id}`, {
+  try {
+    const res = await fetch(`http://localhost:3000/api/funcao/${id}`, {
       method: "DELETE",
     });
-    navigate("/funcao");
-  };
+
+    const texto = await res.text();
+    console.log("Resposta da API:", texto);
+
+    if (res.ok) {
+      navigate("/funcao");
+    } else {
+      alert("Erro ao excluir função: " + texto);
+    }
+  } catch (error) {
+    console.error("Erro de rede:", error);
+    alert("Erro de rede ao excluir.");
+  }
+};
+
 
   return (
     <div>

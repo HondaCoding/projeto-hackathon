@@ -16,7 +16,7 @@ export default function ReservaDelete() {
     await fetch(`http://localhost:3000/api/reserva/${id}`, {
       method: "DELETE",
     });
-    navigate("/reserva");
+    navigate("/");
   };
 
   if (!reserva) return <p>Carregando dados...</p>;

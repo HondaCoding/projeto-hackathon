@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { PERMISSOES } from "../../constants/permissoes";
+
 
 export default function FuncaoEdit() {
   const { id } = useParams();
@@ -14,8 +16,8 @@ export default function FuncaoEdit() {
       .then(res => res.json())
       .then(data => {
         setOldData({ tipoFuncao: data.tipoFuncao, permissao: data.permissao });
-        // setTipoFuncao(data.tipoFuncao);
-        // setPermissao(data.permissao);
+        setTipoFuncao(data.tipoFuncao);
+        setPermissao(data.permissao);
       });
   }, [id]);
 
@@ -38,7 +40,15 @@ export default function FuncaoEdit() {
             <input value={tipoFuncao} onChange={e => setTipoFuncao(e.target.value)} />
 
             <p><strong>Permissão atual:</strong> {oldData.permissao}</p>
-            <input value={permissao} onChange={e => setPermissao(e.target.value)} />
+            <select value={permissao} onChange={(e) => setPermissao(e.target.value)} required>
+              <option value="">Selecione uma permissão</option>
+              {PERMISSOES.map((perm) => (
+                <option key={perm} value={perm}>
+                  {perm}
+                </option>
+              ))}
+            </select>
+
             
             <button type="submit">Salvar</button>
         </form>
