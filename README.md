@@ -2,18 +2,19 @@
 <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Senac_logo.svg" width="100px"> 2025
 </h1>
 
-Projeto destinado ao **Hackathon 2025.1** da **Faculdade Senac Maringá** durante a *Semana Acadêmica* do curso de **Análise e Desenvolvimento de Sistemas** que teve duração de 3 dias. 
+Projeto desenvolvido para o **Hackathon 2025.1**, com duração de 3 dias, realizado pela **Faculdade Senac Maringá** durante a *Semana Acadêmica* do curso de **Análise e Desenvolvimento de Sistemas**. O desafio teve como objetivo criar um Sistema de Controle de Reservas e Recursos (CRR).
 
 
-## 🎯 Objetivo do Projeto
+## 🎯 Descrição do Desafio
 O objetivo do desenvolvimento do CRR é de oferecer uma forma prática, intuitiva e funcional para
 que recursos de uma empresa possam ser reservados e utilizados de forma organizada e unificada,
 reduzindo com isto, a necessidade de múltiplos meios de controle de reserva de itens como espaços
 físicos, aparelhos e outros que estejam disponíveis em uma empresa para uso coletivo.
 
 > [!NOTE]
-> Tanto a descrição do [Objetivo do Projeto ](#objetivo-do-projeto) quanto os [Requisitos do Projeto](#requisitos-do-projeto), foram fornecidos pela organização do HACKATHON.
+> A **Descrição do Desafio** foi fornecida pela organização do **HACKATHON**.
 
+<br>
 
 ## 💻 Tecnologias utilizadas
 <div>
@@ -22,6 +23,7 @@ físicos, aparelhos e outros que estejam disponíveis em uma empresa para uso co
     <img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white" />
     <img src="https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white" />
 </div>
+<br>
 
 A linguagem **JavaScript** foi escolhida pela familiaridade do desenvolvedor e pela facilidade de integração entre o front-end e o back-end, o que acelerou o desenvolvimento.
 
@@ -29,9 +31,28 @@ No **front-end**, o **React** foi adotado por sua praticidade no gerenciamento d
 
 No **back-end**, o **Node.js** foi utilizado em conjunto com o **Express.js**, facilitando a criação das rotas e a estruturação da API de forma simples e eficiente.
 
-No **banco de dados**, o **MySQL** foi usado, pois já havia sido previamente disponibilizado pela organização do Hackathon, sendo integrado ao projeto sem a necessidade de reestruturação.
+> Foi utilizado o **banco de dados MySQL**, pois já havia sido previamente disponibilizado pela organização do Hackathon, sendo apenas integrado ao projeto sem a necessidade de reestruturação.
+<br>
 
 ## 📂 Estrutura de pastas
+O projeto foi estruturado em 2 pastas:
+  - `hackathon-senac` **(Backend)**
+    - `infraestrutura`: pasta que possui o arquivo `db.js`, tem o objetivo de fazer a conexão com o banco de dados.
+    - `routers`: pasta destinada as rotas (`recurso`/`funcao`/`reserva`/`responsavel`) que possuem os métodos **HTTP** **(GET, PUT, POST, DELETE)**.
+    - `index.js`: arquivo com as rotas modularizadas.
+  - `frontend` **(Frontend)**
+    - `public`: pasta com imagem .svg. 
+    - `src`: pasta do projeto.
+      - `assets`: pasta com arquivos de imagem, vídeo e gif.
+      - `components`: pasta destinada aos componentes.
+      - `pages`: pasta destinada as paginas de `devolucao`,`funcao`,`recurso`, `reserva` e `home.jsx`.
+    - `App.jsx`: arquivo com as rotas para cada página.
+    - `main.jsx`: arquivo com o `App.jsx` e o logo do Sistema.
+    
+> [!TIP]
+> A pasta `database` é utilizada somente para conter o arquivo .sql a ser importado.
+
+<br>
 
 ## 🚀 Como rodar o projeto
 
@@ -47,18 +68,16 @@ Para executar o sistema localmente, siga os passos abaixo:
 > [!IMPORTANT]
 > O arquivo do banco de dados `.sql` está disponivel na pasta **`database`** do projeto, não sendo necessário fazer a modelagem.
 
+<br>
+
 ### 2. Configurando o banco de dados
 
 1. Inicie o **XAMPP** e ative os serviços **Apache** e **MySQL**.
 2. Acesse o **phpMyAdmin** (geralmente em `http://localhost/phpmyadmin`).
 3. Crie um banco de dados com o nome `reservacursos`.
-4. Importe o arquivo `hackathon.sql` fornecido com o projeto para criar as tabelas e registros iniciais.s. 
-
-
-> [!TIP]
-> Nota-se que o nome de algumas tabelas do banco de dados estão "invertidas", sendo elas:
-> - registros de ``Recursos`` estão na tabela ``tiporecurso``
-> - registros de ``Reserva`` estão na tabela ``recurso`` 
+4. Importe o arquivo `hackathon.sql` fornecido com o projeto para criar as tabelas e registros iniciais. 
+ 
+<br>
 
 ### 3. Instalando as dependências
 
@@ -83,19 +102,23 @@ Backend (API): http://localhost:3000
 
 Frontend: http://localhost:5173
 
+<br>
 
 ## 🔨 Futuras implemetações
-Implementações futuras:
+
 - [ ] Alteração de layout para ocupar mais espaço horizontal
 - [ ] Sistema de login com permissões de acessos ao sistema
 - [ ] Implementação de 'Dark Mode & Light Mode'
 - [ ] Sistema de histórico de devoluções
+
+<br>
 
 ## 📸 Vídeo do sistema
 
 <!-- <img src="https://i.imgur.com/plm2S4k.gif" /> -->
 <img src="./frontend/src/assets/sistemaCRR.gif" />
 
+<br>
 
 ## 🧾 Requisitos do Projeto
 - **RF01** – CRUD de recursos (cadastro, consulta, edição e exclusão de dados).
@@ -124,3 +147,6 @@ usuário (administrativo é diferente de externo, por exemplo).
   - **Coordenador / Professor / Instrutor** – Cadastro e Edição de reservas e devoluções.
   - **Administrativo** – CRUD completo para reservas.
   - **Externo** – inativo (uso futuro).
+
+> [!NOTE]
+> Os **Requisitos do Projeto** foram fornecidos pela organização do **HACKATHON**.
